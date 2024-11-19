@@ -1,10 +1,9 @@
-package com.xuecheng.content;
+package com.xuecheng.content.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xuecheng.base.model.PageParams;
 import com.xuecheng.base.model.PageResult;
-import com.xuecheng.content.mapper.CourseBaseMapper;
 import com.xuecheng.content.model.dto.QueryCourseParamsDto;
 import com.xuecheng.content.model.po.CourseBase;
 import org.apache.commons.lang3.StringUtils;
@@ -40,9 +39,11 @@ public class CourseBaseMapperTests {
         //拼装查询条件
         LambdaQueryWrapper<CourseBase> queryWrapper = new LambdaQueryWrapper<>();
         //根据名称模糊查询,在sql中拼接 course_base.name like '%值%'
-        queryWrapper.like(StringUtils.isNotEmpty(courseParamsDto.getCourseName()),CourseBase::getName,courseParamsDto.getCourseName());
+        queryWrapper.like(StringUtils.isNotEmpty(courseParamsDto.getCourseName()),
+                CourseBase::getName, courseParamsDto.getCourseName());
         //根据课程审核状态查询 course_base.audit_status = ?
-        queryWrapper.eq(StringUtils.isNotEmpty(courseParamsDto.getAuditStatus()), CourseBase::getAuditStatus,courseParamsDto.getAuditStatus());
+        queryWrapper.eq(StringUtils.isNotEmpty(courseParamsDto.getAuditStatus()),
+                CourseBase::getAuditStatus, courseParamsDto.getAuditStatus());
         //todo:按课程发布状态查询
         //分页参数对象
         PageParams pageParams = new PageParams();
@@ -59,7 +60,8 @@ public class CourseBaseMapperTests {
         long total = pageResult.getTotal();
 
         //List<T> items, long counts, long page, long pageSize
-        PageResult<CourseBase> courseBasePageResult = new PageResult<CourseBase>(items,total,pageParams.getPageNo(), pageParams.getPageSize());
+        PageResult<CourseBase> courseBasePageResult = new PageResult<CourseBase>(items,
+                total, pageParams.getPageNo(), pageParams.getPageSize());
         System.out.println(courseBasePageResult);
     }
 }

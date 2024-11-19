@@ -18,4 +18,8 @@ public interface CourseCategoryMapper extends BaseMapper<CourseCategory> {
     //使用递归查询分类
     public List<CourseCategoryTreeDto> selectTreeNodes(String id);
 
+    //直接查询
+    public List<CourseCategoryTreeDto> selectTreeNodesNoParam();
+
+    public CourseCategory selectById(String id);
 }

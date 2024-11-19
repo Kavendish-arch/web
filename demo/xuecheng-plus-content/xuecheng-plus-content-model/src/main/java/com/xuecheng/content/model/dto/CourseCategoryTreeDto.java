@@ -14,7 +14,8 @@ import java.util.List;
 @Data
 public class CourseCategoryTreeDto extends CourseCategory implements java.io.Serializable {
 
-   //子节点
-   List<CourseCategoryTreeDto> childrenTreeNodes;
+    // 继承课程类，增加一项属性
+    //子节点
+    List<CourseCategoryTreeDto> childrenTreeNodes;
 
 }

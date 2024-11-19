@@ -1,10 +1,13 @@
 package com.xuecheng.base.exception;
 
 /**
- * @author Mr.M
+ * @author chenyingtao
  * @version 1.0
+ * @projectName demo
+ * @packageName com.xuecheng.base.exception
+ * @className XueChengPlusException
+ * @date 2024/11/19 20:07
  * @description 本项目自定义异常类型
- * @date 2023/2/12 16:56
  */
 public class XueChengPlusException extends RuntimeException {
 
@@ -27,10 +30,11 @@ public class XueChengPlusException extends RuntimeException {
         this.errMessage = errMessage;
     }
 
-    public static void cast(String message){
+    public static void cast(String message) {
         throw new XueChengPlusException(message);
     }
-    public static void cast(CommonError error){
+
+    public static void cast(CommonError error) {
         throw new XueChengPlusException(error.getErrMessage());
     }
 

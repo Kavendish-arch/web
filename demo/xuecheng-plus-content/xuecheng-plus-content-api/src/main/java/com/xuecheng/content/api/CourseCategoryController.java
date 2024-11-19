@@ -21,8 +21,12 @@ public class CourseCategoryController {
     CourseCategoryService courseCategoryService;
 
 
+
     @GetMapping("/course-category/tree-nodes")
     public List<CourseCategoryTreeDto> queryTreeNodes() {
+        // 调用service方法
+        // 设计的树形标的结构
+        //
         return courseCategoryService.queryTreeNodes("1");
     }
 
