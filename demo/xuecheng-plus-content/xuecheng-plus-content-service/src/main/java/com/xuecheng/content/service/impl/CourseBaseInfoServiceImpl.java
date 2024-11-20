@@ -156,6 +156,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         return courseBaseInfo;
     }
 
+    @Transactional
     @Override
     public CourseBaseInfoDto updateCourseBase(Long companyId, EditCourseDto editCourseDto) {
         // 3. 查询
@@ -176,6 +177,24 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         BeanUtils.copyProperties(editCourseDto, courseBase);
         // 更新时间 等
         courseBase.setChangeDate(LocalDateTime.now());
+
+//        String mt = editCourseDto.getMt();
+//        String st = editCourseDto.getSt();
+
+//        LambdaQueryWrapper<CourseCategory> queryWrapper = new LambdaQueryWrapper<>();
+////        queryWrapper = queryWrapper.eq(CourseCategory::getName, mt);
+//        CourseCategory courseCategory = courseCategoryMapper.selectOne(queryWrapper.eq(CourseCategory::getName, mt));
+//
+//        if (courseCategory == null) {
+//            XueChengPlusException.cast("请选择正确的一级分类");
+//        }
+//
+//        CourseCategory courseCategory1 = courseCategoryMapper.selectOne(queryWrapper.eq(CourseCategory::getLabel, st));
+//        if (courseCategory1 == null) {
+//            XueChengPlusException.cast("请选择正确的二级分类");
+//        }
+//        courseBase.setMt(courseCategory.getId());
+//        courseBase.setSt(courseCategory1.getId());
         // 更新时间 等
 
         int i = courseBaseMapper.updateById(courseBase);
@@ -193,6 +212,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
      * @param courseId
      * @return
      */
+    @Transactional
     public CourseBaseInfoDto getCourseBaseInfoById(long courseId) {
 
         //从课程基本信息表查询

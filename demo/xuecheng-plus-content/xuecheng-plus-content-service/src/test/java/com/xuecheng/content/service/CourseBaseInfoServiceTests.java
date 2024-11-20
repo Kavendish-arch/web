@@ -37,9 +37,10 @@ public class CourseBaseInfoServiceTests {
         System.out.println(courseBasePageResult);
 
     }
+
     @Test
-    public void testGetCourseBaseInfo(){
-        CourseBaseInfoDto courseBaseInfoDto = courseBaseInfoService.getCourseBaseInfo(118L);
+    public void testGetCourseBaseInfo() {
+        CourseBaseInfoDto courseBaseInfoDto = courseBaseInfoService.getCourseBaseInfoById(118L);
 
     }
 }
